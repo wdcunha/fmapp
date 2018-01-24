@@ -11,5 +11,3 @@ The technologies used are:
 *
 
 * ...
-# fmapp
-# fmapp
