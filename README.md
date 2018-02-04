@@ -8,6 +8,6 @@ The technologies used are:
 
 * Database: PostgreSQL
 
-*
+* Front-End: React...
 
 * ...

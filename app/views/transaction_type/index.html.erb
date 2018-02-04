@@ -1,0 +1,44 @@
+
+<div class="container-fluid">
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="#">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">Form Transaction Type</li>
+  </ol>
+  <div class="card mb-3">
+    <div class="card-header">
+      <i class="fa fa-table"></i> Transaction Type Table</div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+          <% @transacTypes.each do |transacType| %>
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>Id</th>
+                <th>Description</th>
+              </tr>
+            </tfoot>
+            <tbody>
+              <tr>
+                <td><%= link_to transacType.id, transaction_type_path(transacType) %></td>
+                <td><%= link_to transacType.title, transaction_type_path(transacType) %></td>
+              </tr>
+            </tbody>
+          <% end %>
+
+        </table>
+      </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+  </div>
+
+</div>

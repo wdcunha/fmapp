@@ -1,0 +1,92 @@
+
+<div class="container-fluid">
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="#">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">Form Transaction Type</li>
+  </ol>
+
+  <div class="container">
+    <div class="col-lg-9">
+    <br>
+
+    <form class="form-horizontal" action=" " method="post"  id="reg_form">
+      <fieldset>
+
+        <!-- Form Name -->
+      <legend> Transaction Type Register </legend>
+
+      <!-- Text input-->
+
+      <div class="form-group">
+        <label class="col-md-4 control-label">Description</label>
+        <div class="col-md-6  inputGroupContainer">
+          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input  name="description" placeholder="Description" class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+
+
+
+          <!-- Button -->
+          <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+              <button type="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
+  </div>
+    <!-- /.container -->
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+
+    <script type="text/javascript">
+
+       $(document).ready(function() {
+        $('#reg_form').bootstrapValidator({
+            // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                description: {
+                    validators: {
+                            stringLength: {
+                            min: 4,
+                        },
+                            notEmpty: {
+                            message: 'Please supply a description for the type of transaction'
+                        }
+                    }
+                },
+              }
+            })
+            .on('success.form.bv', function(e) {
+                $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
+                    $('#reg_form').data('bootstrapValidator').resetForm();
+
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function(result) {
+                    console.log(result);
+                }, 'json');
+            });
+    });
+ </script>
+</div>
