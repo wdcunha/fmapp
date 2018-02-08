@@ -1,47 +1,53 @@
 
 <div class="container-fluid">
   <!-- Breadcrumbs-->
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="#">Dashboard</a>
-    </li>
-    <li class="breadcrumb-item active">Form Transaction Type</li>
-  </ol>
+  <div class="same-line">
+    <ol class="breadcrumb float-left">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Form Transaction Type</li>
+    </ol>
+    <ol class="breadcrumb float-right">
+      <li class="breadcrumb-item">
+        <a href="/transaction_type">Index</a>
+      </li>
+    </ol>
+  </div>
 
-  <div class="container">
+  <div class="container" style="clear: both;">
     <div class="col-lg-9">
     <br>
 
-    <form class="form-horizontal" action=" " method="post"  id="reg_form">
+    <!-- <form class="form-horizontal" action=" " method="post"  id="reg_form"> -->
+    <%= form_for @transacType, :url => {:action => 'create',
+  :controller => 'transaction_type'}, class: 'form-horizontal', id: 'reg_form'  do |f| %>
       <fieldset>
-
         <!-- Form Name -->
       <legend> Transaction Type Register </legend>
-
       <!-- Text input-->
-
       <div class="form-group">
-        <label class="col-md-4 control-label">Description</label>
+        <!-- <label class="col-md-4 control-label">Description</label> -->
         <div class="col-md-6  inputGroupContainer">
-          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-            <input  name="description" placeholder="Description" class="form-control"  type="text">
+          <%= f.label :description %>
+          <div class="input-group"></i></span>
+            <%= f.text_field :description, class: 'form-control', placeholder: 'Here goes the type description' %>
+            <!-- <input  name="description" placeholder="Description" class="form-control"  type="text"> -->
           </div>
         </div>
       </div>
-
-
-
           <!-- Button -->
           <div class="form-group">
             <label class="col-md-4 control-label"></label>
             <div class="col-md-4">
-              <button type="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></button>
+              <!-- <button type="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></button> -->
+              <%= f.submit 'submit', class: 'btn btn-warning' %><span class="glyphicon glyphicon-send"></span>
             </div>
           </div>
         </fieldset>
+        <% end %>
       </form>
     </div>
-
   </div>
     <!-- /.container -->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>

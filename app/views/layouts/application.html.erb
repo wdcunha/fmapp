@@ -17,8 +17,8 @@
     <!-- Custom styles for register forms -->
     <link href="assets/form-validation.css" rel="stylesheet">
 
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/style.css" rel="stylesheet" type="text/css" />
 
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -28,7 +28,10 @@
   <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-      <a class="navbar-brand" href="/">Fimnapp</a>
+      <a class="navbar-brand" href="/">
+        <i class="fa fa-fw fa-sign-out"></i>
+        <span class="nav-link-text">Fimnapp</span>
+      </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -47,9 +50,9 @@
             </a>
           </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="TypeTransac">
-            <a class="nav-link" href="/transaction_type/new">
+            <a class="nav-link" href="/transaction_type">
               <i class="fa fa-fw fa-table"></i>
-              <span class="nav-link-text">Transac types</span>
+              <span class="nav-link-text">Transaction types</span>
             </a>
           </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
