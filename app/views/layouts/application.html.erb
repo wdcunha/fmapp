@@ -11,14 +11,14 @@
     <%= csrf_meta_tags %>
 
     <!-- Page level plugin CSS-->
-    <link href="assets/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- <link href="assets/dataTables.bootstrap4.css" rel="stylesheet"> -->
     <!-- Custom styles for this template-->
-    <link href="assets/sb-admin.css" rel="stylesheet">
+    <!-- <link href="assets/sb-admin.css" rel="stylesheet"> -->
     <!-- Custom styles for register forms -->
-    <link href="assets/form-validation.css" rel="stylesheet">
+    <!-- <link href="assets/form-validation.css" rel="stylesheet"> -->
 
-    <link href="assets/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/style.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="assets/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/style.css" rel="stylesheet" type="text/css" /> -->
 
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -96,13 +96,13 @@
             </a>
             <ul class="sidenav-second-level collapse" id="collapseMulti">
               <li>
-                <a href="#">Second Level Item</a>
+                <a href="/users/:id/edit(.:format)">Edit User</a>
               </li>
               <li>
-                <a href="#">Second Level Item</a>
+                <a href="/users/new">New User</a>
               </li>
               <li>
-                <a href="#">Second Level Item</a>
+                <a href="/users/:id">Show User</a>
               </li>
               <li>
                 <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
@@ -137,8 +137,8 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-fw fa-envelope"></i>
-              <span class="d-lg-none">Messages
+              <i class="fa fa-fw fa-user"></i>
+              <span class="d-lg-none">User
                 <span class="badge badge-pill badge-primary">12 New</span>
               </span>
               <span class="indicator text-primary d-none d-lg-block">
@@ -146,12 +146,12 @@
               </span>
             </a>
             <div class="dropdown-menu" aria-labelledby="messagesDropdown">
-              <h6 class="dropdown-header">New Messages:</h6>
+              <h6 class="dropdown-header">User Menu</h6>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
-                <strong>David Miller</strong>
+              <a class="dropdown-item" href="/users/:id">
+                <strong>My Account</strong>
                 <span class="small float-right text-muted">11:21 AM</span>
-                <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
+                <div class="dropdown-message small">See and manage your profile</div>
               </a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">
@@ -266,12 +266,12 @@
         </div>
         <!-- Bootstrap core JavaScript-->
         <!-- Page level plugin JavaScript-->
-        <script src="assets/jquery.dataTables.js"></script>
-        <script src="assets/dataTables.bootstrap4.js"></script>
+        <!-- <script src="assets/jquery.dataTables.js"></script>
+        <script src="..//dataTables.bootstrap4.js"></script> -->
         <!-- Custom scripts for all pages-->
         <script src="assets/sb-admin.min.js"></script>
         <!-- Custom scripts for this page-->
-        <script src="assets/sb-admin-datatables.min.js"></script>
+        <!-- <script  src="assets/sb-admin-datatables.min.js"></script> -->
       </div>
       <!-- /.content-wrapper-->
   </body>

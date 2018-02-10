@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :transaction_type
 
+  resources :users
+
   root :to => 'welcome#index'
 
 end

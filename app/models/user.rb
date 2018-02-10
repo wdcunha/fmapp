@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  before_save   :downcase_email
 
   has_secure_password
 
@@ -11,8 +12,13 @@ class User < ApplicationRecord
   def full_name
 
     "#{first_name} #{last_name}"
-
   end
 
+
+  private
+
+  def downcase_email
+    self.email = email.downcase
+  end
 
 end

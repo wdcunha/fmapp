@@ -45,6 +45,8 @@ class TransactionTypeController < ApplicationController
   end
 
   def find_transacType
-    @transacType = TransactionType.find params[:id]
+    if params[:id]
+      @transacType = TransactionType.find params[:id]
+    end
   end
 end

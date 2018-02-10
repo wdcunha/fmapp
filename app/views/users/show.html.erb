@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <!-- Breadcrumbs-->
+  <div class="same-line">
+    <ol class="breadcrumb first">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Show User</li>
+    </ol>
+    <div class="myBtnDiv">
+      <a href=""></a>
+    </div>
+  </div>
+
+    <div class="container">
+      <div class="card card-register mx-auto">
+        <div class="card-header">Register an Account</div>
+        <div class="card-body">
+
+      <h4>User: <%= @user.full_name %></h4>
+
+      <table class="table">
+        <tr>
+          <td scope="row">First Name:</td>
+          <td scope="row"><%= @user.first_name %></td>
+        </tr>
+        <tr>
+          <td scope="row">Last Name:</td>
+          <td scope="row"><%= @user.last_name%></td>
+        </tr>
+        <tr>
+          <td scope="row">E-mail:</td>
+          <td scope="row"><%= @user.email%></td>
+        </tr>
+      </table>
+
+      <p><%= link_to '| Edit |', edit_user_path(@user) %></p>
+    </div>
+  </div>
+</div>

@@ -12,16 +12,25 @@
           justify-content: space-between;
 }
 
-.first, .second {
+.first {
   /* background-color: blue;
   color: white; */
-  min-width: 50%;
+  min-width: 75%;
   /* padding: 10px 20px; */
 }
 
 .second {
   text-align: right;
 
+}
+
+.myBtnDiv {
+  width: 100%;
+  text-align: right;
+  /* padding-top: 10px; */
+  padding: 0.75rem 3rem;
+  background-color: #e9ecef;
+  height: 48px;
 }
 
 .clear-both {
