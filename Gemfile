@@ -30,6 +30,7 @@ gem 'font-awesome-rails'
 gem 'bootstrap-sass'
 gem 'sprockets-rails'
 gem 'autoprefixer-rails'
+gem 'rails-erd'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'

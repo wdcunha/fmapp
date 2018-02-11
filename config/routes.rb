@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :transaction_type
 
+  resource :session, only: [:new, :create, :destroy]
+
   resources :users
 
   root :to => 'welcome#index'

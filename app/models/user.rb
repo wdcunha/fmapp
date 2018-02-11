@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   before_save   :downcase_email
 
+  has_many :usings, dependent: :destroy
+  has_many :entities, through: :usings
+
   has_secure_password
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -10,7 +13,6 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
 
   def full_name
-
     "#{first_name} #{last_name}"
   end
 

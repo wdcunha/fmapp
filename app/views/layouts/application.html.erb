@@ -76,7 +76,7 @@
             </a>
             <ul class="sidenav-second-level collapse" id="collapseExamplePages">
               <li>
-                <a href="login.html">Login Page</a>
+                <a href="/session/new">Login Page</a>
               </li>
               <li>
                 <a href="register.html">Registration Page</a>
@@ -146,7 +146,11 @@
               </span>
             </a>
             <div class="dropdown-menu" aria-labelledby="messagesDropdown">
-              <h6 class="dropdown-header">User Menu</h6>
+              <% if user_signed_in? %>
+                <h6 class="dropdown-header">Hi <%current_user.first_name %>!</h6>
+              <% else %>
+                <h6 class="dropdown-header"><%= link_to 'Sign in', new_session_path %></h6>
+              <% end %>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="/users/:id">
                 <strong>My Account</strong>
