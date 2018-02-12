@@ -13,6 +13,8 @@ class UsersController < ApplicationController
     @user = User.new user_params
 
     if @user.save
+      session[:user_id] = @user.id
+
       flash[:success] = "Thank you for signing up #{@user.first_name}!"
       redirect_to user_path(@user)
     else
@@ -42,6 +44,7 @@ class UsersController < ApplicationController
       :first_name,
       :last_name,
       :email,
+      :address,
       :password_digest,
       :password_confirmation
     )

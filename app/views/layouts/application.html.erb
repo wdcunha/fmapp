@@ -147,16 +147,16 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="messagesDropdown">
               <% if user_signed_in? %>
-                <h6 class="dropdown-header">Hi <%current_user.first_name %>!</h6>
+                <h6 class="dropdown-header">Hi <%= current_user.first_name %>!</h6>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<%= user_path(current_user.id) %>">
+                  <strong>My Account</strong>
+                  <span class="small float-right text-muted">11:21 AM</span>
+                  <div class="dropdown-message small">See and manage your profile</div>
+                </a>
               <% else %>
                 <h6 class="dropdown-header"><%= link_to 'Sign in', new_session_path %></h6>
               <% end %>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/users/:id">
-                <strong>My Account</strong>
-                <span class="small float-right text-muted">11:21 AM</span>
-                <div class="dropdown-message small">See and manage your profile</div>
-              </a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">
                 <strong>Jane Smith</strong>
@@ -228,10 +228,17 @@
               </div>
             </form>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-              <i class="fa fa-fw fa-sign-out"></i>Logout</a>
-          </li>
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= new_session_path %>">
+                <i class="fa fa-fw fa-sign-in"></i>Login</a>
+            </li>
+          <% end %>
         </ul>
       </div>
     </nav>
@@ -263,7 +270,8 @@
               <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
               <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <!-- <a class="btn btn-primary" href="">Logout</a> -->
+                <%= link_to("Logout", session_path, method: :delete, class:'btn btn-primary') %>
               </div>
             </div>
           </div>
