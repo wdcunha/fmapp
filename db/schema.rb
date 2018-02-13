@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180211054537) do
+ActiveRecord::Schema.define(version: 20180213014017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,10 +39,10 @@ ActiveRecord::Schema.define(version: 20180211054537) do
     t.text "postaCode"
     t.string "phone"
     t.string "email"
-    t.bigint "payee_customer_types_id"
+    t.bigint "payee_customer_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["payee_customer_types_id"], name: "index_payee_customers_on_payee_customer_types_id"
+    t.index ["payee_customer_type_id"], name: "index_payee_customers_on_payee_customer_type_id"
   end
 
   create_table "transac_categs", force: :cascade do |t|
@@ -57,9 +57,7 @@ ActiveRecord::Schema.define(version: 20180211054537) do
   create_table "transaction_types", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.text "description"
-    t.index ["user_id"], name: "index_transaction_types_on_user_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -68,10 +66,10 @@ ActiveRecord::Schema.define(version: 20180211054537) do
     t.float "value"
     t.bigint "transaction_type_id"
     t.bigint "entity_id"
-    t.bigint "payee_customer_id"
     t.bigint "transac_categ_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "payee_customer_id"
     t.index ["entity_id"], name: "index_transactions_on_entity_id"
     t.index ["payee_customer_id"], name: "index_transactions_on_payee_customer_id"
     t.index ["transac_categ_id"], name: "index_transactions_on_transac_categ_id"
@@ -102,9 +100,8 @@ ActiveRecord::Schema.define(version: 20180211054537) do
     t.index ["user_id"], name: "index_usings_on_user_id"
   end
 
-  add_foreign_key "payee_customers", "payee_customer_types", column: "payee_customer_types_id"
+  add_foreign_key "payee_customers", "payee_customer_types"
   add_foreign_key "transac_categs", "transaction_types"
-  add_foreign_key "transaction_types", "users"
   add_foreign_key "transactions", "entities"
   add_foreign_key "transactions", "payee_customers"
   add_foreign_key "transactions", "transac_categs"

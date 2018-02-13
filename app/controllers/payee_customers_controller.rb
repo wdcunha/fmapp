@@ -1,0 +1,2 @@
+class PayeeCustomersController < ApplicationController
+end

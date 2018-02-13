@@ -1,5 +1,15 @@
 #success_message{ display: none;}
 
+.centered{
+  position: fixed; /* or absolute */
+  top: 30%;
+  left: 30%;
+}
+
+.center-aligned {
+  text-align: center;
+}
+
 .same-line {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -6,7 +6,7 @@
       <li class="breadcrumb-item">
         <a href="#">Dashboard</a>
       </li>
-      <li class="breadcrumb-item active">Transaction Type Register</li>
+      <li class="breadcrumb-item active">New Transaction Type</li>
     </ol>
     <div class="myBtnDiv">
       <a href="/transaction_type">Index</a>
@@ -15,7 +15,7 @@
 
   <div class="container">
     <div class="col-lg-9">
-    <%= form_for @transacType do |f| %>
+    <%= form_for @transacType, html: {class:'form-horizontal', id:'reg_form'} do |f| %>
       <fieldset>
         <!-- Form Name -->
       <legend> Transaction Type Register </legend>

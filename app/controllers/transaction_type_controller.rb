@@ -1,5 +1,5 @@
 class TransactionTypeController < ApplicationController
-  before_action :find_transacType
+  before_action :find_transacType, only: [:show, :edit, :update, :destroy]
 
   def index
     @transacTypes = TransactionType.all.order(created_at: :desc)
