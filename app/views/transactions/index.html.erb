@@ -6,51 +6,62 @@
       <li class="breadcrumb-item">
         <a href="#">Dashboard</a>
       </li>
-      <li class="breadcrumb-item active">Transaction Type List</li>
+      <li class="breadcrumb-item active">Transactions List</li>
     </ol>
     <div class="myBtnDiv">
-      <a href="/transaction_type/new" >New Type</a>
+      <a href="<%= new_transaction_path %>" >New Transaction</a>
     </div>
   </div>
   <div class="card mb-3">
     <div class="card-header">
-      <i class="fa fa-table"></i> Transaction Type Table</div>
+      <i class="fa fa-table"></i> Transactions Table</div>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>Id</th>
-              <th>Description</th>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Category</th>
+              <th>Details</th>
+              <th>Value</th>
               <th>
                 <i class="fa fa-cog"></i>
               </th>
             </tr>
           </thead>
-          <% @transacTypes.each do |transacType| %>
+          <% @transacs.each do |transac| %>
             <tbody>
               <tr>
-                <td><%= link_to transacType.id, transaction_type_path(transacType) %></td>
-                <td><%= link_to transacType.description, transaction_type_path(transacType) %></td>
-                <th>
-                  <%= link_to edit_transaction_type_path(transacType) do %>
+                <td><%= link_to transac.date, transaction_path(transac) %></td>
+                <td><%= link_to transac.transaction_type.description, transaction_path(transac) %></td>
+                <td><%= link_to transac.transac_categ.title, transaction_path(transac) %></td>
+                <td><%= link_to transac.details, transaction_path(transac) %></td>
+                <td><%= link_to transac.value, transaction_path(transac) %></td>
+                <td>
+                  <%= link_to edit_transaction_path(transac) do %>
                     <i class="fa fa-fw fa-edit"></i> |
                   <% end %>
-                  <%= link_to(transaction_type_path(transacType),
+                  <%= link_to(transaction_path(transac),
                         method: :delete,
                         data: {confirm: 'Are you sure?'}
                       ) do %>
                     <i class="fa fa-trash"></i>
                   <% end %>
-                </th>
+                </td>
               </tr>
             </tbody>
           <% end %>
           <tfoot>
             <tr>
-              <th>Id</th>
-              <th>Description</th>
-              <th></th>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Category</th>
+              <th>Details</th>
+              <th>Value</th>
+              <th>
+                <i class="fa fa-cog"></i>
+              </th>
             </tr>
           </tfoot>
         </table>

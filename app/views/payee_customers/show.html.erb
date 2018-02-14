@@ -1,0 +1,48 @@
+<div class="container-fluid">
+  <!-- Breadcrumbs-->
+  <div class="same-line space-between">
+    <ol class="breadcrumb first">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Show Payee/Customer</li>
+    </ol>
+    <div class="myBtnDiv">
+      <a href="<%= payee_customers_path %>">Index</a>
+    </div>
+  </div>
+
+    <div class="container">
+      <div class="card card-register mx-auto">
+        <div class="card-header">Payees/Customers</div>
+        <div class="card-body">
+
+      <h4><%= @payeeCustomer.name %></h4>
+
+      <table class="table">
+        <tr>
+          <td scope="row">Type:</td>
+          <td scope="row"><%= @payeeCustomer.payee_customer_type.title %></td>
+        </tr>
+        <tr>
+          <td scope="row">Address:</td>
+          <td scope="row"><%= @payeeCustomer.address%></td>
+        </tr>
+        <tr>
+          <td scope="row">Postal Code:</td>
+          <td scope="row"><%= @payeeCustomer.postaCode%></td>
+        </tr>
+        <tr>
+          <td scope="row">E-mail:</td>
+          <td scope="row"><%= @payeeCustomer.email%></td>
+        </tr>
+        <tr>
+          <td scope="row">Phone:</td>
+          <td scope="row"><%= @payeeCustomer.phone%></td>
+        </tr>
+      </table>
+
+      <p><%= link_to '< Edit >', edit_payee_customer_path(@payeeCustomer) %></p>
+    </div>
+  </div>
+</div>

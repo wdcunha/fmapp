@@ -15,7 +15,12 @@
 
   <div class="container">
     <div class="col-lg-9">
-    <%= form_for @transacType do |f| %>
+    <%= form_for @transacType, html: {class:'form-horizontal', id:'reg_form'} do |f| %>
+    <% if @transacType.errors.present? %>
+      <p>
+      <%= @transacType.errors.full_messages.join(', ') %>
+      </p>
+    <% end %>
       <fieldset>
         <!-- Form Name -->
       <legend> Transaction Type Register </legend>
@@ -23,59 +28,20 @@
       <div class="form-group">
         <div class="col-md-6  inputGroupContainer">
           <%= f.label :description %>
-          <div class="input-group"></i></span>
-            <%= f.text_field :description, id:'description', name:'description', class: 'form-control', placeholder: 'Here goes the type description' %>
+          <div class="input-group">
+            <%= f.text_field :description, html: {class: 'form-control', placeholder: 'Here goes the type description'} %>
           </div>
         </div>
       </div>
       <!-- Button -->
       <div class="form-group">
         <div class="col-md-4">
-          <%= f.submit 'submit', class: 'btn btn-warning' %>
+          <%= f.submit class: 'btn btn-warning' %>
         </div>
       </div>
     </fieldset>
     <% end %>
     </div>
   </div>
-    <!-- .container -->
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
 
-    <script type="text/javascript">
-
-       $(document).ready(function() {
-        $('#reg_form').bootstrapValidator({
-          fields: {
-              description: {
-                validators: {
-                        stringLength: {
-                        min: 4,
-                    },
-                        notEmpty: {
-                        message: 'Please supply a description for the type of transaction'
-                    }
-                }
-              },
-            }
-          })
-          .on('success.form.bv', function(e) {
-              $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
-                  $('#reg_form').data('bootstrapValidator').resetForm();
-
-              // Prevent form submission
-              e.preventDefault();
-
-              // Get the form instance
-              var $form = $(e.target);
-
-              // Get the BootstrapValidator instance
-              var bv = $form.data('bootstrapValidator');
-
-              // Use Ajax to submit form data
-              $.post($form.attr('action'), $form.serialize(), function(result) {
-                  console.log(result);
-              }, 'json');
-          });
-    });
- </script>
 </div>

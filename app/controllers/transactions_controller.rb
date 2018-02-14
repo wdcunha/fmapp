@@ -20,7 +20,7 @@ class TransactionsController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def edit
@@ -53,5 +53,6 @@ class TransactionsController < ApplicationController
   def find_transac
     if params[:id]
       @transac = Transaction.find params[:id]
+    end
   end
 end

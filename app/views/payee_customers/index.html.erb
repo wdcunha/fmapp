@@ -6,51 +6,59 @@
       <li class="breadcrumb-item">
         <a href="#">Dashboard</a>
       </li>
-      <li class="breadcrumb-item active">Transaction Type List</li>
+      <li class="breadcrumb-item active">Payees/Customers List</li>
     </ol>
     <div class="myBtnDiv">
-      <a href="/transaction_type/new" >New Type</a>
+      <a href="<%= new_payee_customer_path %>" >New Payee/Customer</a>
     </div>
   </div>
   <div class="card mb-3">
     <div class="card-header">
-      <i class="fa fa-table"></i> Transaction Type Table</div>
+      <i class="fa fa-table"></i>Payees/Customers Table</div>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>Id</th>
-              <th>Description</th>
+              <th>Type</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
               <th>
-                <i class="fa fa-cog"></i>
+                <i class="fa fa-cog center-aligned"></i>
               </th>
             </tr>
           </thead>
-          <% @transacTypes.each do |transacType| %>
+          <% @payeeCustomers.each do |payeeCustomer| %>
             <tbody>
               <tr>
-                <td><%= link_to transacType.id, transaction_type_path(transacType) %></td>
-                <td><%= link_to transacType.description, transaction_type_path(transacType) %></td>
-                <th>
-                  <%= link_to edit_transaction_type_path(transacType) do %>
+                <td><%= link_to payeeCustomer.payee_customer_type.title, payee_customer_path(payeeCustomer) %></td>
+                <td><%= link_to payeeCustomer.name, payee_customer_path(payeeCustomer) %></td>
+                <td><%= link_to payeeCustomer.email, payee_customer_path(payeeCustomer) %></td>
+                <td><%= link_to payeeCustomer.phone, payee_customer_path(payeeCustomer) %></td>
+                <td>
+                  <%= link_to edit_payee_customer_path(payeeCustomer) do %>
                     <i class="fa fa-fw fa-edit"></i> |
                   <% end %>
-                  <%= link_to(transaction_type_path(transacType),
+                  <%= link_to(payee_customer_path(payeeCustomer),
                         method: :delete,
                         data: {confirm: 'Are you sure?'}
                       ) do %>
                     <i class="fa fa-trash"></i>
                   <% end %>
-                </th>
+                </td>
               </tr>
             </tbody>
           <% end %>
           <tfoot>
             <tr>
-              <th>Id</th>
-              <th>Description</th>
-              <th></th>
+              <th>Type</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>
+                <i class="fa fa-cog center-aligned"></i>
+              </th>
             </tr>
           </tfoot>
         </table>

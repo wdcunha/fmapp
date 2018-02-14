@@ -6,76 +6,83 @@
       <li class="breadcrumb-item">
         <a href="#">Dashboard</a>
       </li>
-      <li class="breadcrumb-item active">New Transaction Type</li>
+      <li class="breadcrumb-item active">Payee/Customer Register</li>
     </ol>
     <div class="myBtnDiv">
-      <a href="/transaction_type">Index</a>
+      <a href="<%= payee_customers_path %>">Index</a>
     </div>
   </div>
 
   <div class="container">
-    <div class="col-lg-9">
-    <%= form_for @transacType, html: {class:'form-horizontal', id:'reg_form'} do |f| %>
+    <div class="col-lg-12">
+    <%= form_for @payeeCustomer, html: {class:'form-horizontal', id:'reg_form'} do |f| %>
+    <% if @payeeCustomer.errors.present? %>
+      <p>
+      <%= @payeeCustomer.errors.full_messages.join(', ') %>
+      </p>
+    <% end %>
+
       <fieldset>
         <!-- Form Name -->
-      <legend> Transaction Type Register </legend>
+      <legend> Payee/Customer Registration </legend>
       <!-- Text input-->
       <div class="form-group">
-        <div class="col-md-6  inputGroupContainer">
-          <%= f.label :description %>
-          <div class="input-group"></i></span>
-            <%= f.text_field :description, id:'description', name:'description', class: 'form-control', placeholder: 'Here goes the type description' %>
+        <div class="form-row">
+          <div class="col-md-8  inputGroupContainer">
+            <%= f.label :name %>
+            <div class="input-group">
+              <%= f.text_field :name, class: 'form-control', placeholder: 'Here goes the payee/customer name' %>
+            </div>
+          </div>
+          <div class="col-md-4  inputGroupContainer">
+            <%= f.label :payee_customer_type %>
+            <div class="input-group">
+              <% types = PayeeCustomerType.all.map { |payeeCustomerType| [payeeCustomerType.title, payeeCustomerType.id] } %>
+              <%= f.select :payee_customer_type_id, options_for_select(types), {}, {class: 'custom-select', placeholder: 'Here goes the type'} %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-md-8  inputGroupContainer">
+            <%= f.label :address %>
+            <div class="input-group">
+              <%= f.text_field :address, id:'address', class: 'form-control', placeholder: 'Here goes the address' %>
+            </div>
+          </div>
+          <div class="col-md-4  inputGroupContainer">
+            <%= f.label :postaCode, value:'Postal Code' %>
+            <div class="input-group">
+              <%= f.text_field :postaCode, id:'postaCode', class: 'form-control', placeholder: 'Here goes the postaCode' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-md-8  inputGroupContainer">
+            <%= f.label :email %>
+            <div class="input-group">
+              <%= f.text_field :email, id:'email', class: 'form-control', placeholder: 'Here goes the email' %>
+            </div>
+          </div>
+          <div class="col-md-4  inputGroupContainer">
+            <%= f.label :phone %>
+            <div class="input-group">
+              <%= f.text_field :phone, id:'phone', class: 'form-control', placeholder: 'Here goes the phone' %>
+            </div>
           </div>
         </div>
       </div>
       <!-- Button -->
       <div class="form-group">
         <div class="col-md-4">
-          <%= f.submit 'submit', class: 'btn btn-warning' %>
+          <%= f.submit class: 'btn btn-warning' %>
         </div>
       </div>
     </fieldset>
     <% end %>
     </div>
   </div>
-    <!-- .container -->
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
-
-    <script type="text/javascript">
-
-       $(document).ready(function() {
-        $('#reg_form').bootstrapValidator({
-          fields: {
-              description: {
-                validators: {
-                        stringLength: {
-                        min: 4,
-                    },
-                        notEmpty: {
-                        message: 'Please supply a description for the type of transaction'
-                    }
-                }
-              },
-            }
-          })
-          .on('success.form.bv', function(e) {
-              $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
-                  $('#reg_form').data('bootstrapValidator').resetForm();
-
-              // Prevent form submission
-              e.preventDefault();
-
-              // Get the form instance
-              var $form = $(e.target);
-
-              // Get the BootstrapValidator instance
-              var bv = $form.data('bootstrapValidator');
-
-              // Use Ajax to submit form data
-              $.post($form.attr('action'), $form.serialize(), function(result) {
-                  console.log(result);
-              }, 'json');
-          });
-    });
- </script>
 </div>

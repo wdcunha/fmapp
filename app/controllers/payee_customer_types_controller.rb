@@ -14,7 +14,7 @@ class PayeeCustomerTypesController < ApplicationController
 
     if @payeeCustomerType.save
 
-      redirect_to payee_customer_types_path
+      redirect_to payee_customer_path(@payeeCustomerType)
     else
       render :new
     end
@@ -25,7 +25,7 @@ class PayeeCustomerTypesController < ApplicationController
 
   def update
     if @payeeCustomerType.update(payee_customer_type_params)
-      redirect_to payee_customer_types_path, success: 'Item updated!'
+      redirect_to payee_customer_path(@payeeCustomerType), success: 'Item updated!'
     else
       render :edit
     end

@@ -1,0 +1,48 @@
+<div class="container-fluid">
+  <!-- Breadcrumbs-->
+  <div class="same-line">
+    <ol class="breadcrumb first">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Show Entity</li>
+    </ol>
+    <div class="myBtnDiv">
+      <a href="<%= entities_path %>">Index</a>
+    </div>
+  </div>
+
+    <div class="container">
+      <div class="card card-register mx-auto">
+        <div class="card-header">Entity</div>
+        <div class="card-body">
+
+      <h4><%= @entity.name %></h4>
+
+      <table class="table">
+        <tr>
+          <td scope="row">Doc Number:</td>
+          <td scope="row"><%= @entity.docNumber %></td>
+        </tr>
+        <tr>
+          <td scope="row">Address:</td>
+          <td scope="row"><%= @entity.address%></td>
+        </tr>
+        <tr>
+          <td scope="row">Postal Code:</td>
+          <td scope="row"><%= @entity.postaCode%></td>
+        </tr>
+        <tr>
+          <td scope="row">E-mail:</td>
+          <td scope="row"><%= @entity.email%></td>
+        </tr>
+        <tr>
+          <td scope="row">Phone:</td>
+          <td scope="row"><%= @entity.phone%></td>
+        </tr>
+      </table>
+
+      <p><%= link_to '< Edit >', edit_entity_path(@entity) %></p>
+    </div>
+  </div>
+</div>

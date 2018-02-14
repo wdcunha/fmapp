@@ -6,51 +6,56 @@
       <li class="breadcrumb-item">
         <a href="#">Dashboard</a>
       </li>
-      <li class="breadcrumb-item active">Transaction Type List</li>
+      <li class="breadcrumb-item active">Entities List</li>
     </ol>
     <div class="myBtnDiv">
-      <a href="/transaction_type/new" >New Type</a>
+      <a href="<%= new_entity_path %>" >New Entity</a>
     </div>
   </div>
   <div class="card mb-3">
     <div class="card-header">
-      <i class="fa fa-table"></i> Transaction Type Table</div>
+      <i class="fa fa-table"></i> Entities Table</div>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>Id</th>
-              <th>Description</th>
+              <th>Doc Num</th>
+              <th>Name</th>
+              <th>Email</th>
               <th>
-                <i class="fa fa-cog"></i>
+                <i class="fa fa-cog center-aligned"></i>
               </th>
             </tr>
           </thead>
-          <% @transacTypes.each do |transacType| %>
+          <% @entities.each do |entity| %>
             <tbody>
               <tr>
-                <td><%= link_to transacType.id, transaction_type_path(transacType) %></td>
-                <td><%= link_to transacType.description, transaction_type_path(transacType) %></td>
-                <th>
-                  <%= link_to edit_transaction_type_path(transacType) do %>
+                <td><%= link_to entity.docNumber, entity_path(entity) %></td>
+                <td><%= link_to entity.name, entity_path(entity) %></td>
+                <td><%= link_to entity.email, entity_path(entity) %></td>
+                <td>
+                  <%= link_to edit_entity_path(entity) do %>
                     <i class="fa fa-fw fa-edit"></i> |
                   <% end %>
-                  <%= link_to(transaction_type_path(transacType),
+                  <%= link_to(entity_path(entity),
                         method: :delete,
                         data: {confirm: 'Are you sure?'}
                       ) do %>
                     <i class="fa fa-trash"></i>
                   <% end %>
-                </th>
+                </td>
               </tr>
             </tbody>
           <% end %>
           <tfoot>
             <tr>
-              <th>Id</th>
-              <th>Description</th>
-              <th></th>
+              <th>Doc Num</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>
+                <i class="fa fa-cog center-aligned"></i>
+              </th>
             </tr>
           </tfoot>
         </table>

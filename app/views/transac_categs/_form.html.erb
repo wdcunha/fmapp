@@ -42,10 +42,46 @@
           <div class="input-group"></i></span>
             <% categs = TransactionType.all.map { |transacType| [transacType.description, transacType.id] } %>
             <%= f.select :transaction_type, options_for_select(categs), html: {id:'transaction_type', class: 'form-control', placeholder: 'Here goes the type'} %>
-
           </div>
         </div>
       </div>
+  <div class="nav-collapse collapse">
+   <ul class="nav pull-right">
+      <li class="dropdown">
+          <a href="/product_and_services" class="dropdown-toggle" data-toggle="dropdown">Products and Services<b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+             <li class="nav-header">PRODUCTS</li>
+             <li><a href="product.html">Product1</a></li>
+             <li><a href="product.html">Product2</a></li>
+             <li><a href="product.html">Product3</a></li>
+             <li><a href="all_products.html">All products</a></li>
+             <li class="divider"></li>
+             <li class="nav-header">SERVICES</li>
+             <li><a href="service.html">Service1</a></li>
+            <li><a href="service.html">Service2</a></li>
+            <li><a href="service.html">Service3</a></li>
+            <li><a href="all_services.html">All services</a></li>
+        </ul>
+     </li>
+     <li class="dropdown">
+        <a href="/about" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+           <li><a href="our_works.html">Our works</a></li>
+           <li><a href="patnerships.html">Parnerships</a></li>
+           <li><a href="leadership.html">Leadership</a></li>
+           <li><a href="news.html">News</a></li>
+           <li><a href="events.html">Events</a></li>
+           <li><a href="blog.html">Blog</a></li>
+        </ul>
+     </li>
+     <li><a href="faq.html">FAQ</a></li>
+     <li><a href="/contact_us">Contact us</a></li>
+     <li><a href="signup.html">Sign up</a></li>
+     <li><a href="signin.html">Sign in</a></li>
+   </ul>
+</div>
+
       <!-- Button -->
       <div class="form-group">
         <div class="col-md-4">
