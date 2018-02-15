@@ -43,6 +43,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan'
 gem 'cowsay', '~> 0.3.0'
 gem 'faker', github: 'stympy/faker'
+gem 'chartkick'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

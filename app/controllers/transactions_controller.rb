@@ -3,6 +3,7 @@ class TransactionsController < ApplicationController
 
   def index
     @transacs = Transaction.all.order(created_at: :desc)
+    # @type = @transacs.transaction_types.all
   end
 
   def new

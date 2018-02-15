@@ -1,12 +1,39 @@
 
-    <div class="container-fluid centered">
+      <% if !user_signed_in? %>
+        <div class="container-fluid centered">
 
-      <h1>Welcome to Financial Management Application!</h1>
-      <p class="center-aligned">
-        <% if !user_signed_in? %>
-          You are not loged in. <%= link_to 'Sign in here.', new_session_path %>
-        <% end %>
-      </p>
-
+          <h1>Welcome to Financial Management Application!</h1>
+          <p class="center-aligned">
+              You are not loged in. <%= link_to 'Sign in here.', new_session_path %>
+          </p>
+      <% end %>
+      <% if user_signed_in? %>
+      <div class="container-fluid">
+        <h1>Welcome to Financial Management Application!</h1>
+        <div class="row">
+          <div class="col-lg-6">
+            <!-- Pie Chart Card -->
+            <div class="card mb-3">
+              <div class="card-header">
+                <i class="fa fa-bar-chart"></i> Incomes</div>
+                <div class="card-body">
+                  <%= pie_chart TransacCateg.joins(:transactions).where(transaction_type_id: 1).group(:title).sum(:value), donut: true, legend: true, position: 'left' %>
+                </div>
+                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <!-- Pie Chart Card-->
+              <div class="card mb-3">
+                <div class="card-header">
+                  <i class="fa fa-pie-chart"></i> Expenses </div>
+                  <div class="card-body">
+                    <%= pie_chart TransacCateg.joins(:transactions).where(transaction_type_id: 2).group(:title).sum(:value) %>
+                  </div>
+                  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                </div>
+              </div>
+            </div>
+      <% end %>
     </div>
     <!-- /.container-fluid-->
