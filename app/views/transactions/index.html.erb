@@ -30,6 +30,7 @@
               </th>
             </tr>
           </thead>
+          <% total = 0 %>
           <% @transacs.each do |transac| %>
             <tbody>
               <tr>
@@ -37,7 +38,7 @@
                 <td><%= link_to transac.transaction_type.description, transaction_path(transac) %></td>
                 <td><%= link_to transac.transac_categ.title, transaction_path(transac) %></td>
                 <td><%= link_to transac.details, transaction_path(transac) %></td>
-                <td><%= link_to transac.value, transaction_path(transac) %></td>
+                <td><%= link_to number_to_currency(transac.value), transaction_path(transac) %></td>
                 <td>
                   <%= link_to edit_transaction_path(transac) do %>
                     <i class="fa fa-fw fa-edit"></i> |
@@ -51,17 +52,16 @@
                 </td>
               </tr>
             </tbody>
+            <% total = total + transac.value %>
           <% end %>
           <tfoot>
             <tr>
-              <th>Date</th>
-              <th>Type</th>
-              <th>Category</th>
-              <th>Details</th>
-              <th>Value</th>
-              <th>
-                <i class="fa fa-cog"></i>
-              </th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th style="align-text= right">Total: </th>
+              <th><%= number_to_currency(total) %></th>
+              <th></th>
             </tr>
           </tfoot>
         </table>
