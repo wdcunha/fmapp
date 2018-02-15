@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="card mb-3">
-    <div class="card-header"> 
+    <div class="card-header">
       <i class="fa fa-table"></i> Payee / Customer Type Table</div>
     <div class="card-body">
       <div class="table-responsive">
@@ -37,7 +37,7 @@
                   <%= link_to edit_payee_customer_type_path(payeeCustomerType) do %>
                     <i class="fa fa-fw fa-edit"></i> |
                   <% end %>
-                  <%= link_to(payee_customer_types_path(payeeCustomerType),
+                  <%= link_to(payee_customer_type_path(payeeCustomerType),
                         method: :delete,
                         data: {confirm: 'Are you sure?'}
                       ) do %>

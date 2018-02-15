@@ -3,7 +3,18 @@ class TransactionsController < ApplicationController
 
   def index
     @transacs = Transaction.all.order(created_at: :desc)
-    # @type = @transacs.transaction_types.all
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "transaction_report",
+        layout: "layouts/pdf",
+        template: "transactions/index.html.erb",
+        encoding: "UTF-8",
+        # no_background: true,
+        disposition: "inline"
+      end
+    end
   end
 
   def new
@@ -47,7 +58,11 @@ class TransactionsController < ApplicationController
     params.require(:transaction).permit(
       :details,
       :date,
-      :value
+      :value,
+      :transaction_type_id,
+      :entity_id,
+      :transac_categ_id,
+      :payee_customer_id
     )
   end
 

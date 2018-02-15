@@ -24,6 +24,7 @@ gem 'coffee-rails', '~> 4.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
+gem 'jquery-ui-rails'
 gem 'jquery-rails'
 gem 'bootstrap'
 gem 'font-awesome-rails'
@@ -44,7 +45,8 @@ gem 'cancancan'
 gem 'cowsay', '~> 0.3.0'
 gem 'faker', github: 'stympy/faker'
 gem 'chartkick'
-
+gem 'wicked_pdf', github: 'mileszs/wicked_pdf'
+gem 'wkhtmltopdf-binary'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

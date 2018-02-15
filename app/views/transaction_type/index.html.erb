@@ -30,8 +30,8 @@
           <% @transacTypes.each do |transacType| %>
             <tbody>
               <tr>
-                <td><%= link_to transacType.id, transaction_type_path(transacType) %></td>
-                <td><%= link_to transacType.description, transaction_type_path(transacType) %></td>
+                <td><%= transacType.id %></td>
+                <td><%= transacType.description %></td>
                 <th>
                   <%= link_to edit_transaction_type_path(transacType) do %>
                     <i class="fa fa-fw fa-edit"></i> |

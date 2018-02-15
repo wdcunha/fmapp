@@ -28,10 +28,27 @@
       <!-- Text input-->
       <div class="form-group">
         <div class="form-row">
-          <div class="col-md-8  inputGroupContainer">
+          <div class="col-md-12  inputGroupContainer">
             <%= f.label :details %>
             <div class="input-group">
               <%= f.text_field :details, class: 'form-control', placeholder: 'Here goes the details' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-md-4  inputGroupContainer">
+            <%= f.label :date %>
+            <div class="input-group">
+              <%#= f.date_select :date, {}, id:'date', class: 'form-control', placeholder: 'Here goes the date' %>
+              <%= f.text_field :date, id:'date', class: 'form-control', placeholder: 'Here goes the date' %>
+            </div>
+          </div>
+          <div class="col-md-4  inputGroupContainer">
+            <%= f.label :value %>
+            <div class="input-group">
+              <%= f.text_field :value, id:'value', class: 'form-control', placeholder: 'Here goes the value' %>
             </div>
           </div>
           <div class="col-md-4  inputGroupContainer">
@@ -39,22 +56,6 @@
             <div class="input-group">
               <% transacTypes = TransactionType.all.map { |transacType| [transacType.description, transacType.id] } %>
               <%= f.select :transaction_type_id, options_for_select(transacTypes), {}, {class: 'custom-select', placeholder: 'Here goes the transaction type'} %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="form-row">
-          <div class="col-md-8  inputGroupContainer">
-            <%= f.label :date %>
-            <div class="input-group">
-              <%= f.date_select :date, {}, id:'date', class: 'form-control', placeholder: 'Here goes the date' %>
-            </div>
-          </div>
-          <div class="col-md-4  inputGroupContainer">
-            <%= f.label :value %>
-            <div class="input-group">
-              <%= f.text_field :value, id:'value', class: 'form-control', placeholder: 'Here goes the value' %>
             </div>
           </div>
         </div>
