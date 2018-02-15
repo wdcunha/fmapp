@@ -1,44 +1,61 @@
 
 <div class="container-fluid">
   <!-- Breadcrumbs-->
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="#">Dashboard</a>
-    </li>
-    <li class="breadcrumb-item active">Form Transaction Type</li>
-  </ol>
+  <div class="same-line space-between">
+    <ol class="breadcrumb first">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Transaction Type List</li>
+    </ol>
+    <div class="myBtnDiv">
+      <a href="<%= new_transaction_type_path %>" >New Type</a>
+    </div>
+  </div>
   <div class="card mb-3">
     <div class="card-header">
       <i class="fa fa-table"></i> Transaction Type Table</div>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Description</th>
+              <th>
+                <i class="fa fa-cog"></i>
+              </th>
+            </tr>
+          </thead>
           <% @transacTypes.each do |transacType| %>
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tfoot>
-              <tr>
-                <th>Id</th>
-                <th>Description</th>
-              </tr>
-            </tfoot>
             <tbody>
               <tr>
                 <td><%= link_to transacType.id, transaction_type_path(transacType) %></td>
-                <td><%= link_to transacType.title, transaction_type_path(transacType) %></td>
+                <td><%= link_to transacType.description, transaction_type_path(transacType) %></td>
+                <th>
+                  <%= link_to edit_transaction_type_path(transacType) do %>
+                    <i class="fa fa-fw fa-edit"></i> |
+                  <% end %>
+                  <%= link_to(transaction_type_path(transacType),
+                        method: :delete,
+                        data: {confirm: 'Are you sure?'}
+                      ) do %>
+                    <i class="fa fa-trash"></i>
+                  <% end %>
+                </th>
               </tr>
             </tbody>
           <% end %>
-
+          <tfoot>
+            <tr>
+              <th>Id</th>
+              <th>Description</th>
+              <th></th>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>
     <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
   </div>
-
 </div>

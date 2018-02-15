@@ -1,0 +1,95 @@
+
+<div class="container-fluid">
+  <!-- Breadcrumbs-->
+  <div class="same-line">
+    <ol class="breadcrumb first">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Transaction Category Register</li>
+    </ol>
+    <div class="myBtnDiv">
+      <a href="<%= transac_categs_path %>">Index</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="col-lg-9">
+    <%= form_for @transacCateg, html: {class:'form-horizontal', id:'reg_form'} do |f| %>
+      <fieldset>
+        <!-- Form Name -->
+      <legend> Transactions Category Register </legend>
+      <!-- Text input-->
+      <div class="form-group">
+        <div class="col-md-6  inputGroupContainer">
+          <%= f.label :title %>
+          <div class="input-group"></i></span>
+            <%= f.text_field :title, id:'title', name:'title', class: 'form-control', placeholder: 'Here goes the  title type' %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6  inputGroupContainer">
+          <%= f.label :description %>
+          <div class="input-group"></i></span>
+            <%= f.text_field :description, id:'description', name:'description', class: 'form-control', placeholder: 'Here goes the description type' %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6  inputGroupContainer">
+          <%= f.label :transaction_type %>
+          <div class="input-group"></i></span>
+            <% categs = TransactionType.all.map { |transacType| [transacType.description, transacType.id] } %>
+            <%= f.select :transaction_type, options_for_select(categs), html: {id:'transaction_type', class: 'form-control', placeholder: 'Here goes the type'} %>
+          </div>
+        </div>
+      </div>
+  <div class="nav-collapse collapse">
+   <ul class="nav pull-right">
+      <li class="dropdown">
+          <a href="/product_and_services" class="dropdown-toggle" data-toggle="dropdown">Products and Services<b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+             <li class="nav-header">PRODUCTS</li>
+             <li><a href="product.html">Product1</a></li>
+             <li><a href="product.html">Product2</a></li>
+             <li><a href="product.html">Product3</a></li>
+             <li><a href="all_products.html">All products</a></li>
+             <li class="divider"></li>
+             <li class="nav-header">SERVICES</li>
+             <li><a href="service.html">Service1</a></li>
+            <li><a href="service.html">Service2</a></li>
+            <li><a href="service.html">Service3</a></li>
+            <li><a href="all_services.html">All services</a></li>
+        </ul>
+     </li>
+     <li class="dropdown">
+        <a href="/about" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+           <li><a href="our_works.html">Our works</a></li>
+           <li><a href="patnerships.html">Parnerships</a></li>
+           <li><a href="leadership.html">Leadership</a></li>
+           <li><a href="news.html">News</a></li>
+           <li><a href="events.html">Events</a></li>
+           <li><a href="blog.html">Blog</a></li>
+        </ul>
+     </li>
+     <li><a href="faq.html">FAQ</a></li>
+     <li><a href="/contact_us">Contact us</a></li>
+     <li><a href="signup.html">Sign up</a></li>
+     <li><a href="signin.html">Sign in</a></li>
+   </ul>
+</div>
+
+      <!-- Button -->
+      <div class="form-group">
+        <div class="col-md-4">
+          <%= f.submit 'submit', class: 'btn btn-warning' %>
+        </div>
+      </div>
+    </fieldset>
+    <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+
+<div class="container-fluid">
+  <!-- Breadcrumbs-->
+  <div class="same-line">
+    <ol class="breadcrumb first">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Payee/Customer Type Register</li>
+    </ol>
+    <div class="myBtnDiv">
+      <a href="<% payee_customer_types_path %>">Index</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="col-lg-9">
+    <%= form_for @payeeCustomerType, html: {class:'form-horizontal', id:'reg_form'} do |f| %>
+      <fieldset>
+        <!-- Form Name -->
+      <legend> Payee / Customer Type Register </legend>
+      <!-- Text input-->
+      <div class="form-group">
+        <div class="col-md-6  inputGroupContainer">
+          <%= f.label :title %>
+          <div class="input-group"></i></span>
+            <%= f.text_field :title, id:'title', class: 'form-control', placeholder: 'Here goes the  title type' %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-6  inputGroupContainer">
+          <%= f.label :description %>
+          <div class="input-group"></i></span>
+            <%= f.text_field :description, id:'description', class: 'form-control', placeholder: 'Here goes the description type' %>
+          </div>
+        </div>
+      </div>
+      <!-- Button -->
+      <div class="form-group">
+        <div class="col-md-4">
+          <%= f.submit 'submit', class: 'btn btn-warning' %>
+        </div>
+      </div>
+    </fieldset>
+    <% end %>
+    </div>
+  </div>
+</div>

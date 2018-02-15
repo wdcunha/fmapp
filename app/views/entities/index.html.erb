@@ -1,0 +1,66 @@
+
+<div class="container-fluid">
+  <!-- Breadcrumbs-->
+  <div class="same-line space-between">
+    <ol class="breadcrumb first">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Entities List</li>
+    </ol>
+    <div class="myBtnDiv">
+      <a href="<%= new_entity_path %>" >New Entity</a>
+    </div>
+  </div>
+  <div class="card mb-3">
+    <div class="card-header">
+      <i class="fa fa-table"></i> Entities Table</div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Doc Num</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>
+                <i class="fa fa-cog center-aligned"></i>
+              </th>
+            </tr>
+          </thead>
+          <% @entities.each do |entity| %>
+            <tbody>
+              <tr>
+                <td><%= link_to entity.docNumber, entity_path(entity) %></td>
+                <td><%= link_to entity.name, entity_path(entity) %></td>
+                <td><%= link_to entity.email, entity_path(entity) %></td>
+                <td>
+                  <%= link_to edit_entity_path(entity) do %>
+                    <i class="fa fa-fw fa-edit"></i> |
+                  <% end %>
+                  <%= link_to(entity_path(entity),
+                        method: :delete,
+                        data: {confirm: 'Are you sure?'}
+                      ) do %>
+                    <i class="fa fa-trash"></i>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          <% end %>
+          <tfoot>
+            <tr>
+              <th>Doc Num</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>
+                <i class="fa fa-cog center-aligned"></i>
+              </th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+  </div>
+</div>

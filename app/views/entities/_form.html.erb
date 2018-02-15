@@ -1,0 +1,87 @@
+
+<div class="container-fluid">
+  <!-- Breadcrumbs-->
+  <div class="same-line">
+    <ol class="breadcrumb first">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Entity Register</li>
+    </ol>
+    <div class="myBtnDiv">
+      <a href="<%= entities_path %>">Index</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="col-lg-12">
+    <%= form_for @entity, html: {class:'form-horizontal', id:'reg_form'} do |f| %>
+    <% if @entity.errors.present? %>
+    <p>
+      <%= @entity.errors.full_messages.join(', ') %>
+    </p>
+    <% end %>
+
+      <fieldset>
+        <!-- Form Name -->
+      <legend> Entity Registration </legend>
+      <!-- Text input-->
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-md-8  inputGroupContainer">
+            <%= f.label :name %>
+            <div class="input-group"></i></span>
+              <%= f.text_field :name, id:'name', class: 'form-control', placeholder: 'Here goes the entity name' %>
+            </div>
+          </div>
+          <div class="col-md-4  inputGroupContainer">
+            <%= f.label :docNumber, value:'Doc Number'%>
+            <div class="input-group"></i></span>
+              <%= f.text_field :docNumber, id:'docNumber', class: 'form-control', placeholder: 'Here goes the docNumber' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-md-8  inputGroupContainer">
+            <%= f.label :address %>
+            <div class="input-group"></i></span>
+              <%= f.text_field :address, id:'address', class: 'form-control', placeholder: 'Here goes the address' %>
+            </div>
+          </div>
+          <div class="col-md-4  inputGroupContainer">
+            <%= f.label :postaCode, value:'Postal Code' %>
+            <div class="input-group"></i></span>
+              <%= f.text_field :postaCode, id:'postaCode', class: 'form-control', placeholder: 'Here goes the postaCode' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-md-8  inputGroupContainer">
+            <%= f.label :email %>
+            <div class="input-group"></i></span>
+              <%= f.text_field :email, id:'email', class: 'form-control', placeholder: 'Here goes the email' %>
+            </div>
+          </div>
+          <div class="col-md-4  inputGroupContainer">
+            <%= f.label :phone %>
+            <div class="input-group"></i></span>
+              <%= f.text_field :phone, id:'phone', class: 'form-control', placeholder: 'Here goes the phone' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Button -->
+      <div class="form-group">
+        <div class="col-md-4">
+          <%= f.submit class: 'btn btn-warning' %>
+        </div>
+      </div>
+    </fieldset>
+    <% end %>
+    </div>
+  </div>
+</div>

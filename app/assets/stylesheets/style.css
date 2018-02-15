@@ -1,1 +1,48 @@
 #success_message{ display: none;}
+
+.centered{
+  position: fixed; /* or absolute */
+  top: 30%;
+  left: 30%;
+}
+
+.center-aligned {
+  text-align: center;
+}
+
+.same-line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /* padding: 30px; */
+}
+.container.space-between {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.first {
+  /* background-color: blue;
+  color: white; */
+  min-width: 65%;
+  /* padding: 10px 20px; */
+}
+
+.second {
+  text-align: right;
+
+}
+
+.myBtnDiv {
+  width: 100%;
+  text-align: right;
+  /* padding-top: 10px; */
+  padding: 0.75rem 3rem;
+  background-color: #e9ecef;
+  height: 48px;
+}
+
+.clear-both {
+  clear: both;
+}

@@ -1,8 +1,8 @@
 class TransactionTypeController < ApplicationController
-  before_action :find_transacType
+  before_action :find_transacType, only: [:show, :edit, :update, :destroy]
 
   def index
-    @transacType = TransactionType.all.order(created_at: :desc)
+    @transacTypes = TransactionType.all.order(created_at: :desc)
   end
 
   def new
@@ -19,6 +19,23 @@ class TransactionTypeController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
+  def update
+    if @transacType.update(transacType_params)
+      redirect_to transaction_type_index_path, success: 'Item updated!'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @transacType.destroy
+    redirect_to transaction_type_index_path, success: 'Item deleted!'
+  end
+
   private
 
   def transacType_params
@@ -28,6 +45,8 @@ class TransactionTypeController < ApplicationController
   end
 
   def find_transacType
-    @transacType = TransactionType.find params[:id]
+    if params[:id]
+      @transacType = TransactionType.find params[:id]
+    end
   end
 end

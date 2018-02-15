@@ -11,14 +11,14 @@
     <%= csrf_meta_tags %>
 
     <!-- Page level plugin CSS-->
-    <link href="assets/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- <link href="assets/dataTables.bootstrap4.css" rel="stylesheet"> -->
     <!-- Custom styles for this template-->
-    <link href="assets/sb-admin.css" rel="stylesheet">
+    <!-- <link href="assets/sb-admin.css" rel="stylesheet"> -->
     <!-- Custom styles for register forms -->
-    <link href="assets/form-validation.css" rel="stylesheet">
+    <!-- <link href="assets/form-validation.css" rel="stylesheet"> -->
 
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="assets/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/style.css" rel="stylesheet" type="text/css" /> -->
 
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -28,7 +28,10 @@
   <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-      <a class="navbar-brand" href="/">Fimnapp</a>
+      <a class="navbar-brand" href="/">
+        <i class="fa fa-fw fa-sign-out"></i>
+        <span class="nav-link-text">Fimnapp</span>
+      </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -46,10 +49,37 @@
               <span class="nav-link-text">Charts</span>
             </a>
           </li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+              <i class="fa fa-fw fa-file"></i>
+              <span class="nav-link-text">Pages</span>
+            </a>
+            <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+              <li>
+                <a href="<%= transactions_path %>">Transactions</a>
+              </li>
+              <li>
+                <a href="<%= entities_path %>">Entities</a>
+              </li>
+              <li>
+                <a href="<%= payee_customers_path %>">Payees/Customers</a>
+              </li>
+              <li>
+                <a href="/transaction_type">Transaction types</a>
+              </li>
+              <li>
+                <a href="<%= payee_customer_types_path %>">Payee/Customer types</a>
+              </li>
+              <li>
+                <a href="<%= transac_categs_path %>">Transactions Categories</a>
+              </li>
+            </ul>
+          </li>
+
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="TypeTransac">
-            <a class="nav-link" href="/transaction_type/new">
+            <a class="nav-link" href="">
               <i class="fa fa-fw fa-table"></i>
-              <span class="nav-link-text">Transac types</span>
+              <span class="nav-link-text">Table</span>
             </a>
           </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
@@ -66,26 +96,6 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-              <i class="fa fa-fw fa-file"></i>
-              <span class="nav-link-text">Example Pages</span>
-            </a>
-            <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-              <li>
-                <a href="login.html">Login Page</a>
-              </li>
-              <li>
-                <a href="register.html">Registration Page</a>
-              </li>
-              <li>
-                <a href="forgot-password.html">Forgot Password Page</a>
-              </li>
-              <li>
-                <a href="blank.html">Blank Page</a>
-              </li>
-            </ul>
-          </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
               <i class="fa fa-fw fa-sitemap"></i>
@@ -93,13 +103,13 @@
             </a>
             <ul class="sidenav-second-level collapse" id="collapseMulti">
               <li>
-                <a href="#">Second Level Item</a>
+                <a href="/users/:id/edit(.:format)">Edit User</a>
               </li>
               <li>
-                <a href="#">Second Level Item</a>
+                <a href="/users/new">New User</a>
               </li>
               <li>
-                <a href="#">Second Level Item</a>
+                <a href="/users/:id">Show User</a>
               </li>
               <li>
                 <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
@@ -134,8 +144,8 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-fw fa-envelope"></i>
-              <span class="d-lg-none">Messages
+              <i class="fa fa-fw fa-user"></i>
+              <span class="d-lg-none">User
                 <span class="badge badge-pill badge-primary">12 New</span>
               </span>
               <span class="indicator text-primary d-none d-lg-block">
@@ -143,13 +153,17 @@
               </span>
             </a>
             <div class="dropdown-menu" aria-labelledby="messagesDropdown">
-              <h6 class="dropdown-header">New Messages:</h6>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
-                <strong>David Miller</strong>
-                <span class="small float-right text-muted">11:21 AM</span>
-                <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
-              </a>
+              <% if user_signed_in? %>
+                <h6 class="dropdown-header">Hi <%= current_user.first_name %>!</h6>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<%= user_path(current_user.id) %>">
+                  <strong>My Account</strong>
+                  <span class="small float-right text-muted">11:21 AM</span>
+                  <div class="dropdown-message small">See and manage your profile</div>
+                </a>
+              <% else %>
+                <h6 class="dropdown-header"><%= link_to 'Sign in', new_session_path %></h6>
+              <% end %>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">
                 <strong>Jane Smith</strong>
@@ -221,10 +235,17 @@
               </div>
             </form>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-              <i class="fa fa-fw fa-sign-out"></i>Logout</a>
-          </li>
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= new_session_path %>">
+                <i class="fa fa-fw fa-sign-in"></i>Login</a>
+            </li>
+          <% end %>
         </ul>
       </div>
     </nav>
@@ -256,19 +277,20 @@
               <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
               <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <!-- <a class="btn btn-primary" href="">Logout</a> -->
+                <%= link_to("Logout", session_path, method: :delete, class:'btn btn-primary') %>
               </div>
             </div>
           </div>
         </div>
         <!-- Bootstrap core JavaScript-->
         <!-- Page level plugin JavaScript-->
-        <script src="assets/jquery.dataTables.js"></script>
-        <script src="assets/dataTables.bootstrap4.js"></script>
+        <!-- <script src="assets/jquery.dataTables.js"></script>
+        <script src="..//dataTables.bootstrap4.js"></script> -->
         <!-- Custom scripts for all pages-->
         <script src="assets/sb-admin.min.js"></script>
         <!-- Custom scripts for this page-->
-        <script src="assets/sb-admin-datatables.min.js"></script>
+        <!-- <script  src="assets/sb-admin-datatables.min.js"></script> -->
       </div>
       <!-- /.content-wrapper-->
   </body>

@@ -1,0 +1,47 @@
+
+<div class="container-fluid">
+  <!-- Breadcrumbs-->
+  <div class="same-line">
+    <ol class="breadcrumb first">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Transaction Type Register</li>
+    </ol>
+    <div class="myBtnDiv">
+      <a href="/transaction_type">Index</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="col-lg-9">
+    <%= form_for @transacType, html: {class:'form-horizontal', id:'reg_form'} do |f| %>
+    <% if @transacType.errors.present? %>
+      <p>
+      <%= @transacType.errors.full_messages.join(', ') %>
+      </p>
+    <% end %>
+      <fieldset>
+        <!-- Form Name -->
+      <legend> Transaction Type Register </legend>
+      <!-- Text input-->
+      <div class="form-group">
+        <div class="col-md-6  inputGroupContainer">
+          <%= f.label :description %>
+          <div class="input-group">
+            <%= f.text_field :description, html: {class: 'form-control', placeholder: 'Here goes the type description'} %>
+          </div>
+        </div>
+      </div>
+      <!-- Button -->
+      <div class="form-group">
+        <div class="col-md-4">
+          <%= f.submit class: 'btn btn-warning' %>
+        </div>
+      </div>
+    </fieldset>
+    <% end %>
+    </div>
+  </div>
+
+</div>
