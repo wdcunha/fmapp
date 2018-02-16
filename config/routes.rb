@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :charts, only: [:index]
+
   root :to => 'welcome#index'
 
 end

@@ -15,6 +15,8 @@
 //= require popper
 //= require bootstrap
 //= require rails-ujs
+//= require moment
+//= require fullcalendar
 //= require Chart.bundle
 //= require chartkick
 //= require_tree .
