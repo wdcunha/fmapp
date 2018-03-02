@@ -31,7 +31,21 @@ end
 users = User.all
 
 puts Cowsay.say("Created #{users.count} users", :tux)
+
+TransactionType.destroy_all
+
+TransactionType.create(
+  description: "Income"
+)
+
+TransactionType.create(
+  description: "Expense"
+)
+
 transactionTypes = TransactionType.all
+
+puts Cowsay.say("Created #{transactionTypes.count} transactionType", :moose)
+
 TransacCateg.destroy_all
 
 8.times do
@@ -48,7 +62,6 @@ puts Cowsay.say("Created #{transacCategs.count} transacCategs", :ghostbusters)
 
 
 Transaction.destroy_all
-TransactionType.destroy_all
 
 20.times do
   Entity.create(
@@ -69,12 +82,15 @@ puts Cowsay.say("Created #{entities.count} entities", :ghostbusters)
 PayeeCustomer.destroy_all
 PayeeCustomerType.destroy_all
 
-2.times do
-  PayeeCustomerType.create(
-    title: ["supplier", "customer"].sample,
-    description: Faker::Company.catch_phrase
-  )
-end
+PayeeCustomerType.create(
+  title: "supplier",
+  description: Faker::Company.catch_phrase
+)
+
+PayeeCustomerType.create(
+  title: "customer",
+  description: Faker::Company.catch_phrase
+)
 
 payeeCustomerTypes = PayeeCustomerType.all
 
@@ -90,10 +106,6 @@ puts Cowsay.say("Created #{payeeCustomerTypes.count} payeeCustomerTypes", :ghost
     payee_customer_type: PayeeCustomerType.all.sample
   )
 end
-
-transactionType = TransactionType.all
-
-puts Cowsay.say("Create #{transactionType.count} transactionType", :moose)
 
 payeeCustomers = PayeeCustomer.all
 
