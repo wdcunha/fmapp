@@ -1,0 +1,36 @@
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6">
+            <!-- Pie Chart Card -->
+            <div class="card mb-3">
+              <div class="card-header">
+                <i class="fa fa-bar-chart"></i> Incomes</div>
+                <div class="card-body">
+                  <%= pie_chart TransacCateg.joins(:transactions).where(transaction_type_id: 1).group(:title).sum(:value), donut: true, legend: true, position: 'left' %>
+                </div>
+                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <!-- Pie Chart Card-->
+              <div class="card mb-3">
+                <div class="card-header">
+                  <i class="fa fa-pie-chart"></i> Expenses </div>
+                  <div class="card-body">
+                    <%= pie_chart TransacCateg.joins(:transactions).where(transaction_type_id: 2).group(:title).sum(:value) %>
+                  </div>
+                  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <%= line_chart Transaction.group(:date).sum(:value), discrete: true %>
+              </div>
+              <div class="col-6">
+                <%= bar_chart Transaction.group(:date).sum(:value) %>
+              </div>
+            </div>
+      </div>
+    <!-- /.container-fluid-->

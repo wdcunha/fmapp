@@ -106,10 +106,22 @@ puts Cowsay.say("Created #{payeeCustomerTypes.count} payeeCustomerTypes", :ghost
     payee_customer_type: PayeeCustomerType.all.sample
   )
 end
-
 payeeCustomers = PayeeCustomer.all
 
 puts Cowsay.say("Created #{payeeCustomers.count} payeeCustomers", :ghostbusters)
+
+TransactionType.create(
+  description: "Expense"
+)
+TransactionType.create(
+  description: "Income"
+)
+
+payeeCustomers = PayeeCustomer.all
+
+transacCategs = TransacCateg.all
+
+puts Cowsay.say("Created #{transacCategs.count} transacCategs", :ghostbusters)
 
 20.times do
   Transaction.create(
