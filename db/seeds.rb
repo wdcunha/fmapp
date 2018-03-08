@@ -33,7 +33,13 @@ users = User.all
 puts Cowsay.say("Created #{users.count} users", :tux)
 
 TransactionType.destroy_all
+TransacCateg.destroy_all
+Entity.destroy_all
+PayeeCustomer.destroy_all
+PayeeCustomerType.destroy_all
+Transaction.destroy_all
 
+# ***************** TransactionType ********************
 TransactionType.create(
   description: "Income"
 )
@@ -46,8 +52,7 @@ transactionTypes = TransactionType.all
 
 puts Cowsay.say("Created #{transactionTypes.count} transactionType", :moose)
 
-TransacCateg.destroy_all
-
+# ***************** TransacCateg ********************
 8.times do
   TransacCateg.create(
     title: Faker::Commerce.department(1, true),
@@ -60,9 +65,7 @@ transacCategs = TransacCateg.all
 
 puts Cowsay.say("Created #{transacCategs.count} transacCategs", :ghostbusters)
 
-
-Transaction.destroy_all
-
+# ***************** Entity ********************
 20.times do
   Entity.create(
     name: Faker::Company.name,
@@ -78,10 +81,7 @@ entities = Entity.all
 
 puts Cowsay.say("Created #{entities.count} entities", :ghostbusters)
 
-
-PayeeCustomer.destroy_all
-PayeeCustomerType.destroy_all
-
+# ***************** PayeeCustomerType ********************
 PayeeCustomerType.create(
   title: "supplier",
   description: Faker::Company.catch_phrase
@@ -96,6 +96,7 @@ payeeCustomerTypes = PayeeCustomerType.all
 
 puts Cowsay.say("Created #{payeeCustomerTypes.count} payeeCustomerTypes", :ghostbusters)
 
+# ***************** PayeeCustomer ********************
 10.times do
   PayeeCustomer.create(
     name: Faker::Company.name,
@@ -106,23 +107,12 @@ puts Cowsay.say("Created #{payeeCustomerTypes.count} payeeCustomerTypes", :ghost
     payee_customer_type: PayeeCustomerType.all.sample
   )
 end
+
 payeeCustomers = PayeeCustomer.all
 
 puts Cowsay.say("Created #{payeeCustomers.count} payeeCustomers", :ghostbusters)
 
-TransactionType.create(
-  description: "Expense"
-)
-TransactionType.create(
-  description: "Income"
-)
-
-payeeCustomers = PayeeCustomer.all
-
-transacCategs = TransacCateg.all
-
-puts Cowsay.say("Created #{transacCategs.count} transacCategs", :ghostbusters)
-
+# ***************** Transaction ********************
 20.times do
   Transaction.create(
     details: Faker::Commerce.material + ', ' + Faker::Commerce.product_name + ', ' + Faker::Science.element,
