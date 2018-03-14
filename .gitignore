@@ -108,6 +108,8 @@ typings/
 *.rbc
 capybara-*.html
 .rspec
+/.yardoc
+/doc
 /log
 /tmp
 /db/*.sqlite3
